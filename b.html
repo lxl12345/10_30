@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var href=window.location.href;
+				var id=href.split("?")[1].split("=")[1];
+				$.ajax({
+					url:"http://localhost:3000/item/detail",
+					type:"post",
+					data:{"id":id},
+					success:function(e){
+						console.log(e)
+						if(id=="nav"){
+							$('.right').append("<p>新闻详情</p>");
+						}else{
+							$('.right').append("<p>"+e[0].detail+"</p>");
+						}
+						
+						
+					}
+				});
+			})
+		</script>
+		<style type="text/css">
+			.wrap{
+				width: 100%;
+				height: auto;
+			}
+			.left{
+				width: 30%;
+				height: 500px;
+				float: left;
+				border: 2px solid blue;
+				box-sizing:border-box ;
+			}
+			.right{
+				width: 70%;
+				height: auto;
+				float: left;
+				font-size:26px ;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="left">
+				
+			</div>
+			<div class="right">
+				
+			</div>
+		</div>
+	</body>
+</html>
